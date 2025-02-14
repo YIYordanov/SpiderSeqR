@@ -151,8 +151,8 @@ startSpiderSeqR <- function(path,
     path <- normalizePath(path)
     
     print(path)
-    
-    file_paths <- .findDBFiles(path=path)
+# I have changed "file_paths <- .findDBFiles(path=path)" below to correct an error with "file.exists(file_paths[1])", where if file_paths is a list, it doesn't provide a plain directory path as a char string.
+    file_paths <- unlist(.findDBFiles(path=path))
     .GlobalEnv$file_paths <- file_paths
     
     print(getwd())
